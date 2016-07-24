@@ -6,10 +6,7 @@ import ua.kvelinskiy.dao.FactoryDAO;
 import ua.kvelinskiy.dao.UsersDAO;
 import ua.kvelinskiy.entities.Users;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
 
 public class EditUserCommand implements Command {
     @Override
@@ -25,6 +22,11 @@ public class EditUserCommand implements Command {
         user.setLastName(wrapper.getParameter("last_name"));
         user.setContactInformation(wrapper.getParameter("contact_information"));
         user.setPassword(wrapper.getParameter("password"));
+        session.setAttribute("user", user);
+        session.setAttribute("firstName", user.getFirstName());
+        session.setAttribute("lastName", user.getLastName());
+        session.setAttribute("contactInformation", user.getContactInformation());
+        session.setAttribute("password", user.getPassword());
         if (userDao.update(user)) {
             return "mainUserPage.jsp";
         }

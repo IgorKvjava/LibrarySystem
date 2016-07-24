@@ -5,10 +5,7 @@ import ua.kvelinskiy.dao.UsersDAO;
 import ua.kvelinskiy.entities.Catalogue;
 import ua.kvelinskiy.entities.Users;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
