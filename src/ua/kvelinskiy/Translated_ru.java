@@ -15,7 +15,7 @@ public class Translated_ru extends ListResourceBundle {
             {"ENG", "\u0410\u041d\u0413\u041b"},
             {"Password", "пароль"},
             {"Your", "Ваш"},
-            {"Main page", "На главную"},
+            {"OnMainPage", "На главную"},
             {"ERROR 404", "УПС !!!"},
             {"SignIn", "Вход"},
             {"SignUp", "Регистрация"},
@@ -47,6 +47,12 @@ public class Translated_ru extends ListResourceBundle {
             {"Title", "Название книги"},
             {"MakeOrder", "Сделать заказ выбранных книг"},
             {"Registration", "Регистрация"},
+            {"List", "Список"},
+            {"EnterAbonnement", "Введите № абонемента"},
+            {"Search", "Поиск"},
+            {"RequestStatus", "Статус запроса"},
+            {"Choose", "Сделать выбор"},
+            {"Fail", "Нет такого"},
     };
 
 

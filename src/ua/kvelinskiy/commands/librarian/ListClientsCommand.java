@@ -12,8 +12,11 @@ public class ListClientsCommand implements Command {
         HttpSession session = wrapper.getSession(true);
         Users user = (Users) session.getAttribute("user");
         if (user == null){
+            session.invalidate();
             return "/index.jsp";
         }
-        return "/librarianPages/listClients.jsp";
+        String path = "/librarianPages/listClients.jsp";
+        session.setAttribute("path", path);
+        return path;
     }
 }

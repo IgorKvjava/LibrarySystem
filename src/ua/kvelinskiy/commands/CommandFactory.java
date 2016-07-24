@@ -38,7 +38,7 @@ public class CommandFactory {
         commandMap.put("SingPass", new CheckInCommand());
         commandMap.put("edit", new EditUserCommand());
         commandMap.put("exit", new LogoutCommand());
-        commandMap.put("listClients", new ListClientsCommand());
+        commandMap.put("listUsers", new ListClientsCommand());
         commandMap.put("clientSearch", new ClientSearchCommand());
         commandMap.put("choiceGenres", new OrderGenreCommand());
         commandMap.put("choiceGenre", new OrderBooksCommand());

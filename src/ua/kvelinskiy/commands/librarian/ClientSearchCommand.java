@@ -12,24 +12,28 @@ public class ClientSearchCommand implements Command {
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
         Users user = (Users) session.getAttribute("user");
-        if (user == null){
+        if (user == null) {
+            session.invalidate();
             return "/index.jsp";
         }
         String subscription = wrapper.getParameter("abonnement");
         List<Users> usersList = (List<Users>) session.getAttribute("usersList");
         boolean searchUser = false;
-        for (Users userLib: usersList) {
-            if (userLib.getAbonnement().equals(subscription)){
+        for (Users userLib : usersList) {
+            if (userLib.getAbonnement().equals(subscription)) {
                 session.setAttribute("client", userLib);
-                searchUser =true;
+                searchUser = true;
             }
         }
-        if (searchUser){
-            session.setAttribute("requestStatus", "choose");
-            return "/librarianPages/clientSearch.jsp";
+        if (searchUser) {
+            session.setAttribute("requestStatus", "Choose");
+            String path = "/librarianPages/clientSearch.jsp";
+            session.setAttribute("path", path);
+            return path;
         }
-        session.setAttribute("requestStatus", "client subscription fail");
-        return "/librarianPages/mainLibrarianPage.jsp";
-
+        session.setAttribute("requestStatus", "Fail");
+        String path = "/librarianPages/mainLibrarianPage.jsp";
+        session.setAttribute("path", path);
+        return path;
     }
 }

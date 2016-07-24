@@ -40,7 +40,7 @@ public class LoginCommand implements Command {
                 List<Users> usersList = new ArrayList<>();
                 usersList.addAll(userDao.showActiveUsers());
                 session.setAttribute("usersList", usersList);
-                session.setAttribute("requestStatus", "choose");
+                session.setAttribute("requestStatus", "Choose");
                 path = "/librarianPages/mainLibrarianPage.jsp";
                 session.setAttribute("path", path);
                 return path;

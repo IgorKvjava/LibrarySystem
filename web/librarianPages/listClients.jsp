@@ -1,38 +1,26 @@
 <%@include file="/header.jsp" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="true" %>
 <html>
 <head>
-    <title>List Clients</title>
-    <style type="text/css">
-        .block {
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="List" bundle="${lang}"/> <fmt:message key="User" bundle="${lang}"/> </title>
 </head>
 <body>
 <div class="block">
     <table border="1">
-        <P>
+        <p>
         <form action="${pageContext.request.contextPath}/librarianPages/mainLibrarianPage.jsp">
-            <button type="submit" >Main page</button>
+            <button type="submit"><fmt:message key="MainPage" bundle="${lang}"/></button>
         </form>
-        </P>        <caption>Personal table</caption>
+        </p>
+        <caption><fmt:message key="List" bundle="${lang}"/> <fmt:message key="User" bundle="${lang}"/></caption>
         <tr>
-            <th>id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Abonnement</th>
-            <th>Contact Information</th>
-            <th>Login</th>
-            <th>Password</th>
-            <th>Status</th>
+            <th><fmt:message key="ID" bundle="${lang}"/></th>
+            <th><fmt:message key="FirstName" bundle="${lang}"/></th>
+            <th><fmt:message key="LastName" bundle="${lang}"/></th>
+            <th><fmt:message key="Abonnement" bundle="${lang}"/></th>
+            <th><fmt:message key="ContactInformation" bundle="${lang}"/></th>
+            <th><fmt:message key="LOGIN" bundle="${lang}"/></th>
+            <th><fmt:message key="Password" bundle="${lang}"/></th>
+            <th><fmt:message key="Status" bundle="${lang}"/></th>
         </tr>
         <c:forEach items="${usersList}" var="usersListElem">
             <tr>
