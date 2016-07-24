@@ -14,7 +14,7 @@
                 <th><fmt:message key="Publisher" bundle="${lang}"/></th>
                 <th><fmt:message key="PublicationDate" bundle="${lang}"/></th>
                 <th><fmt:message key="NumberPages" bundle="${lang}"/></th>
-                <th><fmt:message key="Choice" bundle="${lang}"/>S</th>
+                <th><fmt:message key="Choice" bundle="${lang}"/></th>
             </tr>
             <c:forEach items="${booksList}" var="booksListElem">
                 <tr>
