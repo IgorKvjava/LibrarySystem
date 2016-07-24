@@ -1,36 +1,29 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Welcome ${firstName} ${lastName}</title>
-    <style type="text/css">
-        .block {
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="Welcome" bundle="${lang}"/>: ${firstName} ${lastName}</title>
 </head>
 <body>
 <div class="block">
+    <fmt:message key="Welcome" bundle="${lang}"/>: ${firstName} ${lastName}<br>
     <p>
     <form action="<c:url value="/userPages/userEditDataPage.jsp"/>">
-        <button type="submit">Edit data</button>
+        <input type="hidden" name="do" value="profile"/>
+        <input type="submit" value="<fmt:message key="PersonalProfile" bundle="${lang}"/>"/>
     </form>
     </p>
-
     <p>
-        <form action="orders" method="get">
-        <label>Book genres<br></label>
-    <input type="submit" name="do" value="order"/>
-    </form >
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <label><fmt:message key="Genres" bundle="${lang}"/></label>
+        <input type="hidden" name="do" value="choiceGenres"/>
+        <input type="submit" value="<fmt:message key="Choice" bundle="${lang}"/>"/>
+    </form>
 
     </p>
-    <form action="${pageContext.request.contextPath}/" method="get">
+    <form action="${pageContext.request.contextPath}/command" method="get">
         <p>
-            <input type="submit" name="do" value="exit"/>
+            <input type="hidden" name="do" value="exit"/>
+            <input type="submit" value="<fmt:message key="Exit" bundle="${lang}"/>"/>
         </p>
     </form>
 </div>

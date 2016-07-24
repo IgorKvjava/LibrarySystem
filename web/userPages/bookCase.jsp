@@ -1,34 +1,20 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="true" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Recording Board</title>
-  <style type="text/css">
-        .body {
-            font: 14px 'Verdana';
-            margin: 0;
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="ListBooks" bundle="${lang}"/></title>
 </head>
 <body>
-<div class="body">
+<div class="block">
     <form action="checked" method="get">
         <table border="1">
-            <caption>List books</caption>
+            <caption><fmt:message key="ListBooks" bundle="${lang}"/></caption>
             <tr>
-                <th>Id book</th>
-                <th>Status</th>
-                <th>Date Issue</th>
-                <th>Date Return</th>
-                <th>Id user</th>
-                <th>Id</th>
+                <th><fmt:message key="ID" bundle="${lang}"/> <fmt:message key="Book" bundle="${lang}"/></th>
+                <th><fmt:message key="Status" bundle="${lang}"/></th>
+                <th><fmt:message key="DateIssue" bundle="${lang}"/></th>
+                <th><fmt:message key="DateReturn" bundle="${lang}"/></th>
+                <th><fmt:message key="ID" bundle="${lang}"/> <fmt:message key="User" bundle="${lang}"/></th>
+                <th><fmt:message key="ID" bundle="${lang}"/></th>
             </tr>
             <c:forEach items="${catalogueList}" var="catalogueListElem">
                 <tr>
@@ -42,6 +28,17 @@
                 </tr>
             </c:forEach>
         </table>
+    </form>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <label><fmt:message key="Genres" bundle="${lang}"/></label>
+        <input type="hidden" name="do" value="choiceGenres"/>
+        <input type="submit" value="<fmt:message key="Choice" bundle="${lang}"/>"/>
+    </form>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <p>
+            <input type="hidden" name="do" value="mainUserPage"/>
+            <input type="submit" value="<fmt:message key="MainPage" bundle="${lang}"/>"/>
+        </p>
     </form>
 </div>
 </body>

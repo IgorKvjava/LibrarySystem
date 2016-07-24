@@ -1,7 +1,7 @@
 package ua.kvelinskiy.commands.User;
 
-import ua.kvelinskiy.commands.Command;
-import ua.kvelinskiy.commands.IRequestWrapper;
+import ua.kvelinskiy.commands.interfaces.Command;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
 import ua.kvelinskiy.dao.UsersDAO;
 import ua.kvelinskiy.entities.Users;
@@ -16,6 +16,7 @@ public class EditUserCommand implements Command {
         if (user == null) {
             return "/index.jsp";
         }
+        String path;
         FactoryDAO factory = FactoryDAO.getInstance();
         UsersDAO userDao = factory.getUsersDAO();
         user.setFirstName(wrapper.getParameter("first_name"));
@@ -28,8 +29,12 @@ public class EditUserCommand implements Command {
         session.setAttribute("contactInformation", user.getContactInformation());
         session.setAttribute("password", user.getPassword());
         if (userDao.update(user)) {
-            return "mainUserPage.jsp";
+        path = "/userPages/mainUserPage.jsp";
+        session.setAttribute("path", path);
+        return path;
         }
-        return "userEditDataPage.jsp";
+        path = "/userPages/userEditDataPage.jsp";
+        session.setAttribute("path", path);
+        return path;
     }
 }

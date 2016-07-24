@@ -1,30 +1,27 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@include file="/header.jsp" %>
 <html>
 <head>
-    <title><fmt:message key="LOGIN"/> </title>
-
+    <title><fmt:message key="LOGIN" bundle="${lang}"/></title>
 </head>
 <body>
-<div class="block"  >
-    <h2>Logon</h2>
-    <form action="logon" method="post">
+<div class="blockIndex">
+    <h2><fmt:message key="LOGIN" bundle="${lang}"/></h2>
+    <form action="${pageContext.request.contextPath}/command" method="post">
         <p>
-            <label>Your login:<br></label>
+            <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="LOGIN" bundle="${lang}"/>:<br></label>
             <input type="text" name="login" value="" size="15" maxlength="15"/>
         </p>
         <p>
-            <label>Your password:<br></label>
+            <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="Password" bundle="${lang}"/>:<br></label>
             <input type="password" name="password" value="" size="15" maxlength="15"/>
         </p>
         <p>
             <input type="hidden" name="do" value="login"/>
-            <input type="submit"  value="Login"/>
+            <input type="submit" value="<fmt:message key="SignIn" bundle="${lang}"/>"/>
         </p>
     </form>
-    <form action="/registration.jsp">
-        <button type="submit" >Sign up</button>
+    <form action="${pageContext.request.contextPath}/registration.jsp">
+        <button type="submit"><fmt:message key="SignUp" bundle="${lang}"/></button>
     </form>
 </div>
 </body>

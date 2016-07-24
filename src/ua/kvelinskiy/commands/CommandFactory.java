@@ -1,14 +1,15 @@
 package ua.kvelinskiy.commands;
 
-import ua.kvelinskiy.commands.User.CheckedBooksCommand;
-import ua.kvelinskiy.commands.User.EditUserCommand;
-import ua.kvelinskiy.commands.User.OrderBooksCommand;
-import ua.kvelinskiy.commands.User.OrderGenreCommand;
+import ua.kvelinskiy.commands.User.*;
+import ua.kvelinskiy.commands.checkIn.CheckInCommand;
+import ua.kvelinskiy.commands.checkIn.LoginCommand;
+import ua.kvelinskiy.commands.checkIn.SingInCommand;
+import ua.kvelinskiy.commands.interfaces.Command;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.commands.librarian.ClientSearchCommand;
 import ua.kvelinskiy.commands.librarian.ListClientsCommand;
 
 import javax.naming.NamingException;
-import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -39,10 +40,11 @@ public class CommandFactory {
         commandMap.put("exit", new LogoutCommand());
         commandMap.put("listClients", new ListClientsCommand());
         commandMap.put("clientSearch", new ClientSearchCommand());
-        commandMap.put("order", new OrderGenreCommand());
-        commandMap.put("orderGenre", new OrderBooksCommand());
+        commandMap.put("choiceGenres", new OrderGenreCommand());
+        commandMap.put("choiceGenre", new OrderBooksCommand());
         commandMap.put("CheckedBooks", new CheckedBooksCommand());
         commandMap.put("changeLanguage", new ChangeLanguageCommand());
+        commandMap.put("mainUserPage", new MainUserPageCommand());
     }
 
     public static Command getCommand(IRequestWrapper wrapper){

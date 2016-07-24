@@ -1,12 +1,15 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>error</title>
+    <title>fmt:message key="ERROR 404" bundle="${lang}"/></title>
 </head>
 <body>
-<H2>ERROR 404</H2>
-<form action="/index.jsp">
-  <button type="submit" >Back</button>
-</form>
+<div class="blockIndex">
+    <H2><fmt:message key="ERROR 404" bundle="${lang}"/></H2>
+    <form action="${pageContext.request.contextPath}/command" method="post">
+        <input type="hidden" name="do" value="exit"/>
+        <input type="submit" value="<fmt:message key="Main page" bundle="${lang}"/>" />
+    </form>
+</div>
 </body>
 </html>

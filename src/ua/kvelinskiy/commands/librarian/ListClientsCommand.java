@@ -1,13 +1,10 @@
 package ua.kvelinskiy.commands.librarian;
 
-import ua.kvelinskiy.commands.Command;
-import ua.kvelinskiy.commands.IRequestWrapper;
+import ua.kvelinskiy.commands.interfaces.Command;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.entities.Users;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.sql.SQLException;
 
 public class ListClientsCommand implements Command {
     @Override

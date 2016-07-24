@@ -1,30 +1,21 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Enter password</title>
-    <style type="text/css">
-        .block {
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="LOGIN" bundle="${lang}"/>Enter password</title>
 </head>
 <body>
 <div class="block">
-    <form action="login" method="post">
+    <form action="${pageContext.request.contextPath}/command" method="post">
         <p>
-            <label>Your login -${login}<br></label>
+            <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="LOGIN" bundle="${lang}"/>: ${login}<br></label>
         </p>
-        <label>Your password:<br></label>
+        <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="Password" bundle="${lang}"/>:<br></label>
         <input type="text" name="password" value="" size="15" maxlength="15"/>
         </p>
         <input type="hidden" name="login" value="${login}">
-
         <p>
-            <input type="submit" name="do" value="SingPass"/>
+            <input type="hidden" name="do" value="SingPass"/>
+            <input type="submit" value="<fmt:message key="SignUp" bundle="${lang}"/>"/>
         </p>
     </form>
 </div>

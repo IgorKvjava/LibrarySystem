@@ -1,34 +1,20 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="true" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Order Books</title>
-    <style type="text/css">
-        .body {
-            font: 14px 'Verdana';
-            margin: 0;
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="MakeOrder" bundle="${lang}"/></title>
 </head>
 <body>
-<div class="body">
-    <form action="checked" method="get">
+<div class="block">
+    <form action="${pageContext.request.contextPath}/command" method="get">
         <table border="1">
             <caption>List books</caption>
             <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>Publisher</th>
-                <th>Publication date</th>
-                <th>Number pages</th>
-                <th>Selecting-in</th>
+                <th><fmt:message key="Title" bundle="${lang}"/></th>
+                <th><fmt:message key="Author" bundle="${lang}"/></th>
+                <th><fmt:message key="Publisher" bundle="${lang}"/></th>
+                <th><fmt:message key="PublicationDate" bundle="${lang}"/></th>
+                <th><fmt:message key="NumberPages" bundle="${lang}"/></th>
+                <th><fmt:message key="Choice" bundle="${lang}"/>S</th>
             </tr>
             <c:forEach items="${booksList}" var="booksListElem">
                 <tr>
@@ -45,10 +31,16 @@
                 </tr>
             </c:forEach>
         </table>
-        <p>Make order from selected book:</p>
+        <p><fmt:message key="MakeOrder" bundle="${lang}"/>:</p>
         <p>
             <input type="hidden" name="do" value="CheckedBooks"/>
-            <input type="submit"  value="CheckedBooks"/>
+            <input type="submit"  value="<fmt:message key="Choice" bundle="${lang}"/>"/>
+        </p>
+    </form>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <p>
+            <input type="hidden" name="do" value="mainUserPage"/>
+            <input type="submit" value="<fmt:message key="MainPage" bundle="${lang}"/>"/>
         </p>
     </form>
 </div>

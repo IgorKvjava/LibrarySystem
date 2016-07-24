@@ -1,24 +1,26 @@
 package ua.kvelinskiy.commands;
 
-import java.util.ListResourceBundle;
-import java.util.Locale;
-import java.util.ResourceBundle;
+import ua.kvelinskiy.commands.interfaces.Command;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 
+import javax.servlet.http.HttpSession;
 //import org.apache.log4j.Logger;
+
 public class ChangeLanguageCommand implements Command {
 
     @Override
     public String execute (IRequestWrapper wrapper) {
-        String languageProperties = "" ;
-        String lang = wrapper.getParameter("language");
-        Locale locale = new Locale(lang);
-        if (lang.equals("ru_RU")){
-            languageProperties = "language_ru.properties";
-        }else {
-            languageProperties = "language_en.properties";
+        HttpSession session = wrapper.getSession(true);
+        String path = (String) session.getAttribute("path");
+        String locale = (String) wrapper.getAttributes("language");
+        wrapper.setAttributes("locale", locale);
+        session.setAttribute("locale", locale);
+        if (path == null) {
+            return "/index.jsp";
+        } else {
+            return path;
         }
-        ResourceBundle resourceBundle = ResourceBundle.getBundle(languageProperties, locale);
-        return null;
+
     }
 
 

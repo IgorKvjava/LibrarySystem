@@ -1,8 +1,8 @@
 package ua.kvelinskiy.controllers;
 
-import ua.kvelinskiy.commands.Command;
+import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.CommandFactory;
-import ua.kvelinskiy.commands.IRequestWrapper;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.commands.RequestWrapper;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,9 +19,9 @@ public class Controller extends HttpServlet {
 
         IRequestWrapper wrapper = new RequestWrapper(request);
         Command command = CommandFactory.getInstance().getCommand(wrapper);
-        String path= null;
-        path = command.execute(wrapper);
+        String path= command.execute(wrapper);
         RequestDispatcher rd=request.getRequestDispatcher(path);
+        //wrapper.setAttributes("path", path);
         rd.forward(request, response);
     }
 

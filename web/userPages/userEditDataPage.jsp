@@ -1,30 +1,21 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Title</title>
-    <style type="text/css">
-        .block {
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="PersonalProfile" bundle="${lang}"/></title>
 </head>
 <body>
 <div class="block">
-    <form action="edit" method="get">
+    <form action="${pageContext.request.contextPath}/command" method="get">
         <table border="1">
-            <caption>Personal data</caption>
+            <caption><fmt:message key="PersonalProfile" bundle="${lang}"/></caption>
             <tr>
-                <th>id</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Abonnement</th>
-                <th>Contact Information</th>
-                <th>Login</th>
-                <th>Password</th>
+                <th><fmt:message key="ID" bundle="${lang}"/></th>
+                <th><fmt:message key="FirstName" bundle="${lang}"/></th>
+                <th><fmt:message key="LastName" bundle="${lang}"/></th>
+                <th><fmt:message key="Abonnement" bundle="${lang}"/></th>
+                <th><fmt:message key="ContactInformation" bundle="${lang}"/></th>
+                <th><fmt:message key="LOGIN" bundle="${lang}"/></th>
+                <th><fmt:message key="Password" bundle="${lang}"/></th>
             </tr>
             <tr>
                 <td>${id}
@@ -44,12 +35,20 @@
             </tr>
         </table>
         <p>
-            <input type="submit" name="do" value="edit"/>
+            <input type="hidden" name="do" value="edit"/>
+            <input type="submit" value="<fmt:message key="Edit" bundle="${lang}"/>"/>
+        </p>
+    </form>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <p>
+            <input type="hidden" name="do" value="mainUserPage"/>
+            <input type="submit" value="<fmt:message key="MainPage" bundle="${lang}"/>"/>
         </p>
     </form>
     <form action="${pageContext.request.contextPath}/" method="get">
         <p>
-            <input type="submit" name="do" value="exit"/>
+            <input type="hidden" name="do" value="exit"/>
+            <input type="submit" value="<fmt:message key="Exit" bundle="${lang}"/>"/>
         </p>
     </form>
 </div>

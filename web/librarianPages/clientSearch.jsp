@@ -1,16 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
     <title>Client Search</title>
-    <style type="text/css">
-        .block {
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
 </head>
 <body>
 <div class="block">

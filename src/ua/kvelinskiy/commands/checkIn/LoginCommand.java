@@ -1,5 +1,7 @@
-package ua.kvelinskiy.commands;
+package ua.kvelinskiy.commands.checkIn;
 
+import ua.kvelinskiy.commands.interfaces.Command;
+import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
 import ua.kvelinskiy.dao.UsersDAO;
 import ua.kvelinskiy.entities.Catalogue;
@@ -20,10 +22,10 @@ public class LoginCommand implements Command {
         Users user = new Users();
         user.setLogin(login);
         user.setPassword(password);
+        String path;
         FactoryDAO factory = FactoryDAO.getInstance();
         UsersDAO userDao = factory.getUsersDAO();
-        boolean isExist = false;
-        isExist = userDao.isExist(user);
+        boolean isExist = userDao.isExist(user);
         if (isExist) {
             userDao.getUserData(user);
             session.setAttribute("user", user);
@@ -39,17 +41,22 @@ public class LoginCommand implements Command {
                 usersList.addAll(userDao.showActiveUsers());
                 session.setAttribute("usersList", usersList);
                 session.setAttribute("requestStatus", "choose");
-                return "/librarianPages/mainLibrarianPage.jsp";
+                path = "/librarianPages/mainLibrarianPage.jsp";
+                session.setAttribute("path", path);
+                return path;
             } else {
                 if (session.getAttribute("catalogueUser") == null) {
                     Catalogue catalogueUserNew = new Catalogue();
                     session.setAttribute("catalogueUserNew", catalogueUserNew);
                 }
-                return "userPages/mainUserPage.jsp";
+                path = "userPages/mainUserPage.jsp";
+                session.setAttribute("path", path);
+                return path;
             }
         } else {
-            return "/errorPage.jsp";
-
+            path = "/errorPage.jsp";
+            session.setAttribute("path", path);
+            return path;
         }
     }
 }

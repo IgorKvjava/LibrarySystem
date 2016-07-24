@@ -1,32 +1,28 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="true" %>
+<%@include file="/header.jsp" %>
 <html>
 <head>
-    <title>Order page</title>
-    <style type="text/css">
-        .body {
-            font: 14px 'Verdana';
-            margin: 0;
-            width: 90%;
-            background: #ccc;
-            padding: 50px 50px 50px 50px;
-            border: solid 1px black;
-            float: inherit;
-        }
-    </style>
+    <title><fmt:message key="Genres" bundle="${lang}"/></title>
 </head>
 <body>
-<div class="body">
-    Genres <br>
-    <form action="genres" method="post">
+<div class="block">
+    <fmt:message key="Genres" bundle="${lang}"/><br>
+    <form action="${pageContext.request.contextPath}/command" method="post">
         <p><select name="idGenre">
             <c:forEach items="${genresList}" var="genresListElem">
-                <option  value="${genresListElem.id}"> ${genresListElem.genre}</option>
+                <option  value="${genresListElem.id}"> <fmt:message key="${genresListElem.genre}" bundle="${lang}"/></option>
             </c:forEach>
-        </select></p>
-        <p><input type="submit" name="do" value="orderGenre"></p>
+        </select>
+        </p>
+        <p>
+            <input type="hidden" name="do" value="choiceGenre"/>
+            <input type="submit" value="<fmt:message key="Choice" bundle="${lang}"/>">
+        </p>
+    </form>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <p>
+            <input type="hidden" name="do" value="mainUserPage"/>
+            <input type="submit" value="<fmt:message key="MainPage" bundle="${lang}"/>"/>
+        </p>
     </form>
 </div>
 </body>
