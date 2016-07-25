@@ -55,8 +55,8 @@ public class ClientSearchCommand implements Command {
     }
 
         public class BookStatus {
-            public String status;
-            public int idStatus;
+            private String status;
+            private int idStatus;
             public BookStatus(String status, int idStatus) {
                 this.status = status;
                 this.idStatus = idStatus;
