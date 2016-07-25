@@ -2,6 +2,7 @@ package ua.kvelinskiy.commands.librarian;
 
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
+import ua.kvelinskiy.dao.BooksDAO;
 import ua.kvelinskiy.dao.CatalogueDAO;
 import ua.kvelinskiy.dao.FactoryDAO;
 import ua.kvelinskiy.entities.Users;
@@ -29,7 +30,8 @@ public class ClientSearchCommand implements Command {
         }
         if (searchUser) {
             FactoryDAO factory = FactoryDAO.getInstance();
-            CatalogueDAO catalogueDao = factory.getCatalogueDAO();
+            BooksDAO booksDAO = factory.getBooksDAO();
+
 
             session.setAttribute("requestStatus", "Choose");
             String path = "/librarianPages/clientSearch.jsp";

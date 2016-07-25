@@ -23,6 +23,9 @@ public class Books {
         this.publicationDate = publicationDate;
     }
 
+    public Books(String title, String author, Date dateIssue, Date dateReturn, String status) {
+    }
+
     public int getId() {
         return id;
     }
