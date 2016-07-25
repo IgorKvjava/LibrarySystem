@@ -53,8 +53,10 @@ public class Translated_en extends ListResourceBundle {
                 {"RequestStatus", "Request status"},
                 {"Choose", "Choose"},
                 {"Fail", "Fail"},
-                {"", ""},
-                {"", ""},
+                {"Reserve", "Reserve"},
+                {"Free", "Free"},
+                {"BeUsed", "Be used"},
+                {"ReferenceRoom", "Reference room"},
                 {"", ""},
 
 

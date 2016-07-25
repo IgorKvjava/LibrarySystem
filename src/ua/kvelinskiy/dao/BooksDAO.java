@@ -25,7 +25,7 @@ public class BooksDAO {
     public List<BooksUser> showBooksList(int idGenre){
         List<BooksUser> booksList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_USER_BOOKS"));
+            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_BOOKS_LIST"));
             ps.setString(1, String.valueOf(idGenre));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -48,7 +48,7 @@ public class BooksDAO {
     public List<Books> showUserBooksList(int idUser){
         List<Books> booksList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_BOOKS_LIST"));
+            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_USER_BOOKS"));
             ps.setString(1, String.valueOf(idUser));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
@@ -57,7 +57,8 @@ public class BooksDAO {
                 Date dateIssue = rs.getDate("date_issue");
                 Date dateReturn = rs.getDate("date_return");
                 String status = rs.getString("status");
-                booksList.add(new Books(title, author, dateIssue, dateReturn, status));
+                int bookId = rs.getInt("id");
+                booksList.add(new Books(title, author, dateIssue, dateReturn, status, bookId));
             }
             return booksList;
         } catch (SQLException e) {

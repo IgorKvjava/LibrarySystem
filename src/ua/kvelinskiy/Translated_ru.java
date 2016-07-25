@@ -53,6 +53,10 @@ public class Translated_ru extends ListResourceBundle {
             {"RequestStatus", "Статус запроса"},
             {"Choose", "Сделать выбор"},
             {"Fail", "Нет такого"},
+            {"Reserve", "Зарезервирован"},
+            {"Free", "Доступен"},
+            {"BeUsed", "Используется"},
+            {"ReferenceRoom", "В читальном зале"},
     };
 
 

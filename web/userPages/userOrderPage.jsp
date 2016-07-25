@@ -7,9 +7,10 @@
 <div class="block">
     <fmt:message key="Genres" bundle="${lang}"/><br>
     <form action="${pageContext.request.contextPath}/command" method="post">
-        <p><select name="idGenre">
+        <p>
+            <select name="idGenre">
             <c:forEach items="${genresList}" var="genresListElem">
-                <option  value="${genresListElem.id}"> <fmt:message key="${genresListElem.genre}" bundle="${lang}"/></option>
+                <option  value="${genresListElem.id}"> <fmt:message key="${genresListElem.genre}" bundle="${lang}"/> </option>
             </c:forEach>
         </select>
         </p>

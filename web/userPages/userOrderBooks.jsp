@@ -16,16 +16,16 @@
                 <th><fmt:message key="NumberPages" bundle="${lang}"/></th>
                 <th><fmt:message key="Choice" bundle="${lang}"/></th>
             </tr>
-            <c:forEach items="${booksList}" var="booksListElem">
+            <c:forEach items="${booksList}" var="booksUserListElem">
                 <tr>
-                    <td>${booksListElem.title}</td>
-                    <td>${booksListElem.author}</td>
-                    <td>${booksListElem.publisher}</td>
-                    <td>${booksListElem.publicationDate}</td>
-                    <td>${booksListElem.numberPages}</td>
+                    <td>${booksUserListElem.title}</td>
+                    <td>${booksUserListElem.author}</td>
+                    <td>${booksUserListElem.publisher}</td>
+                    <td>${booksUserListElem.publicationDate}</td>
+                    <td>${booksUserListElem.numberPages}</td>
                     <td>
                         <p>
-                            <input type="checkbox" name="bookId" value="${booksListElem.id}"/> ${booksListElem.status}
+                            <input type="checkbox" name="bookId" value="${booksUserListElem.id}"/> ${booksUserListElem.status}
                         </p>
                     </td>
                 </tr>

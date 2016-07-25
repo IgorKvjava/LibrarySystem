@@ -10,6 +10,11 @@ public class Books {
     private String author;
     private String publisher;
     private Date publicationDate;
+    private Date dateIssue;
+    private Date dateReturn;
+    private String status;
+
+
 
     public Books() {
     }
@@ -23,7 +28,13 @@ public class Books {
         this.publicationDate = publicationDate;
     }
 
-    public Books(String title, String author, Date dateIssue, Date dateReturn, String status) {
+    public Books(String title, String author, Date dateIssue, Date dateReturn, String status, int id) {
+        this.title = title;
+        this.author = author;
+        this.dateIssue = dateIssue;
+        this.dateReturn = dateReturn;
+        this.status = status;
+        this.id = id;
     }
 
     public int getId() {
@@ -80,5 +91,29 @@ public class Books {
 
     public void setPublicationDate(Date publicationDate) {
         this.publicationDate = publicationDate;
+    }
+
+    public Date getDateIssue() {
+        return dateIssue;
+    }
+
+    public void setDateIssue(Date dateIssue) {
+        this.dateIssue = dateIssue;
+    }
+
+    public Date getDateReturn() {
+        return dateReturn;
+    }
+
+    public void setDateReturn(Date dateReturn) {
+        this.dateReturn = dateReturn;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
