@@ -4,7 +4,7 @@ import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.BooksDAO;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.entities.BooksUser;
+import ua.kvelinskiy.entities.Books;
 import ua.kvelinskiy.entities.Users;
 
 import javax.servlet.http.HttpSession;
@@ -22,7 +22,7 @@ public class OrderBooksCommand implements Command {
         String path;
         FactoryDAO factory = FactoryDAO.getInstance();
         BooksDAO booksDao = factory.getBooksDAO();
-        List<BooksUser> booksList = new ArrayList<>();
+        List<Books> booksList = new ArrayList<>();
         int idGenre = Integer.parseInt(wrapper.getParameter("idGenre"));
         booksList.addAll(booksDao.showBooksList(idGenre));
         session.setAttribute("booksList", booksList);

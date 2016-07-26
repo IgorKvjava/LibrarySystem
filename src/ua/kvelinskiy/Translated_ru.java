@@ -36,7 +36,7 @@ public class Translated_ru extends ListResourceBundle {
             {"Programming", "Программирование"},
             {"ListBooks", "Список книг"},
             {"Book", "Книга"},
-            {"Status", "Состояние"},
+            {"Status", "Статус"},
             {"DateIssue", "Дата выдачи"},
             {"DateReturn", "Дата возврата"},
             {"User", "Пользователь"},
@@ -57,6 +57,11 @@ public class Translated_ru extends ListResourceBundle {
             {"Free", "Доступен"},
             {"BeUsed", "Используется"},
             {"ReferenceRoom", "В читальном зале"},
+            {"Currently", "Сейчас"},
+            {"Activity", "Действие"},
+            {"Accept", "Утвердить"},
+            {"OrderStatus", "Статус заказа"},
+            {"ChangeStatus", "Изменить статус"},
     };
 
 

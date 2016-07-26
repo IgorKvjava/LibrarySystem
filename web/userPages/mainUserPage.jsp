@@ -18,8 +18,13 @@
         <input type="hidden" name="do" value="choiceGenres"/>
         <input type="submit" value="<fmt:message key="Choice" bundle="${lang}"/>"/>
     </form>
-
     </p>
+    <form action="${pageContext.request.contextPath}/command" method="get">
+        <p><fmt:message key="ListBooks" bundle="${lang}"/>:
+            <input type="hidden" name="do" value="CheckedBooks"/>
+            <input type="submit"  value="<fmt:message key="Choice" bundle="${lang}"/>"/>
+        </p>
+    </form>
     <form action="${pageContext.request.contextPath}/command" method="get">
         <p>
             <input type="hidden" name="do" value="exit"/>

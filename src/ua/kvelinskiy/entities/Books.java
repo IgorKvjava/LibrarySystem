@@ -12,11 +12,25 @@ public class Books {
     private Date publicationDate;
     private Date dateIssue;
     private Date dateReturn;
-    private String status;
-
+    private String statuss;
+    private String orderStatuss;
+    private int idCatalogue;
 
 
     public Books() {
+    }
+//public List<Books> showBooksList(int idGenre)
+    public Books(int id, int numberPages, String title, String author, String publisher, Date publicationDate, Date dateIssue, Date dateReturn, String statuss, String orderStatuss) {
+        this.id = id;
+        this.numberPages = numberPages;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
+        this.publicationDate = publicationDate;
+        this.dateIssue = dateIssue;
+        this.dateReturn = dateReturn;
+        this.statuss = statuss;
+        this.orderStatuss = orderStatuss;
     }
 
     public Books(int id, int numberPages, String title, String author, String publisher, Date publicationDate) {
@@ -27,14 +41,15 @@ public class Books {
         this.publisher = publisher;
         this.publicationDate = publicationDate;
     }
-
-    public Books(String title, String author, Date dateIssue, Date dateReturn, String status, int id) {
+//public List<Books> showUserBooksList(int idUser)
+    public Books(String title, String author, Date dateIssue, Date dateReturn, String statuss, String orderStatuss, int idCatalogue) {
         this.title = title;
         this.author = author;
         this.dateIssue = dateIssue;
         this.dateReturn = dateReturn;
-        this.status = status;
-        this.id = id;
+        this.statuss = statuss;
+        this.orderStatuss = orderStatuss;
+        this.idCatalogue = idCatalogue;
     }
 
     public int getId() {
@@ -109,11 +124,27 @@ public class Books {
         this.dateReturn = dateReturn;
     }
 
-    public String getStatus() {
-        return status;
+    public int getIdCatalogue() {
+        return idCatalogue;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setIdCatalogue(int idCatalogue) {
+        this.idCatalogue = idCatalogue;
+    }
+
+    public String getStatuss() {
+        return statuss;
+    }
+
+    public void setStatuss(String statuss) {
+        this.statuss = statuss;
+    }
+
+    public String getOrderStatuss() {
+        return orderStatuss;
+    }
+
+    public void setOrderStatuss(String orderStatuss) {
+        this.orderStatuss = orderStatuss;
     }
 }

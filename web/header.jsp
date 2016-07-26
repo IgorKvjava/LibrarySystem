@@ -14,10 +14,10 @@
             background: #fc0;
             padding: 5px;
             border: solid 1px black;
-            text-align: center;
-            vertical-align: middle;
+            /*text-align: center;*/
+            /*vertical-align: middle;*/
             display: inline-block;
-            align-items: center;
+            /*align-items: center;*/
             margin: auto;
             /* */
         }

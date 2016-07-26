@@ -36,7 +36,7 @@ public class CatalogueDAO {
             return false;
         }
     }
-
+//public class CheckedBooksCommand
     public boolean updateUserId(String idBook, String idUser) {
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("UPDATE_CATALOGUE_USER_ID"));
@@ -50,7 +50,7 @@ public class CatalogueDAO {
         }
     }
 
-    public List<Catalogue> getCatalogueListUser(String idU) {
+    public List<Catalogue> getCatalogueListUser1(String idU) {
         List<Catalogue> catalogueList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_USER_CATALOGUE"));
@@ -61,14 +61,32 @@ public class CatalogueDAO {
                 int idBook = rs.getInt("id_book");
                 int idUser = rs.getInt("id_user");
                 String status = rs.getString("status");
+                String orderStatus = rs.getString("order_status");
                 Date dateIssue = rs.getDate("date_issue");
                 Date dateReturn = rs.getDate("date_return");
-                catalogueList.add(new Catalogue(id, idBook, idUser, status, dateIssue, dateReturn));
+                catalogueList.add(new Catalogue(id, idBook, idUser, status, orderStatus, dateIssue, dateReturn));
             }
             return catalogueList;
         } catch (SQLException e) {
             //logger.error("SQL error, " + e);
             return null;
         }
+    }
+//public class PlaceOrderCommand
+    public boolean updateCatalogueStatus(String id, String status, int idUser) {
+        try (Connection conn = ds.getConnection()) {
+            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("UPDATE_CATALOGUE_STATUS"));
+            int idCatalogue = Integer.parseInt(id);
+            ps.setString(1, status);
+            ps.setString(2, status);
+            ps.setInt(3, idUser);
+            ps.setInt(4, idCatalogue);
+            ps.execute();
+            return true;
+        } catch (SQLException e) {
+            // logger.error("SQL error, " + e);
+            return false;
+        }
+
     }
 }

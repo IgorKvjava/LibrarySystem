@@ -2,7 +2,6 @@ package ua.kvelinskiy.commands;
 
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
-
 import javax.servlet.http.HttpSession;
 
 public class LogoutCommand implements Command {

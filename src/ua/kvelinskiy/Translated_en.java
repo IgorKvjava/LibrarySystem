@@ -57,6 +57,11 @@ public class Translated_en extends ListResourceBundle {
                 {"Free", "Free"},
                 {"BeUsed", "Be used"},
                 {"ReferenceRoom", "Reference room"},
+                {"Currently", "Currently"},
+                {"Activity", "Activity"},
+                {"Accept", "Accept"},
+                {"OrderStatus", "Order status"},
+                {"ChangeStatus", "ChangeStatus"},
                 {"", ""},
 
 

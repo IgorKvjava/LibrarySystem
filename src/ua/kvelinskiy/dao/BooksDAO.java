@@ -1,8 +1,6 @@
 package ua.kvelinskiy.dao;
 
 import ua.kvelinskiy.entities.Books;
-import ua.kvelinskiy.entities.BooksUser;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -21,9 +19,9 @@ public class BooksDAO {
     public BooksDAO(DataSource ds) {
         this.ds = ds;
     }
-
-    public List<BooksUser> showBooksList(int idGenre){
-        List<BooksUser> booksList = new ArrayList<>();
+//public class OrderBooksCommand
+    public List<Books> showBooksList(int idGenre){
+        List<Books> booksList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_BOOKS_LIST"));
             ps.setString(1, String.valueOf(idGenre));
@@ -35,8 +33,12 @@ public class BooksDAO {
                 String author = rs.getString("author");
                 String publisher = rs.getString("publisher");
                 Date publicationDate = rs.getDate("publication_date");
+                Date dateIssue = rs.getDate("date_issue");
+                Date dateReturn = rs.getDate("date_return");
                 String status = rs.getString("status");
-                booksList.add(new BooksUser(id, numberPages, title, author, publisher, publicationDate, status));
+                String orderStatus = rs.getString("order_status");
+                booksList.add(new Books(id, numberPages, title, author, publisher,
+                        publicationDate, dateIssue, dateReturn, status, orderStatus));
             }
             return booksList;
         } catch (SQLException e) {
@@ -56,9 +58,10 @@ public class BooksDAO {
                 String author = rs.getString("author");
                 Date dateIssue = rs.getDate("date_issue");
                 Date dateReturn = rs.getDate("date_return");
-                String status = rs.getString("status");
-                int bookId = rs.getInt("id");
-                booksList.add(new Books(title, author, dateIssue, dateReturn, status, bookId));
+                String statuss = rs.getString("status");
+                String orderStatuss = rs.getString("order_status");
+                int idCatalogue = rs.getInt("id");
+                booksList.add(new Books(title, author, dateIssue, dateReturn, statuss, orderStatuss,idCatalogue));
             }
             return booksList;
         } catch (SQLException e) {

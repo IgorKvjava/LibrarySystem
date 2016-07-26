@@ -35,12 +35,14 @@ public class ClientSearchCommand implements Command {
             List<Books> booksUserList = new ArrayList<>();
             List<BookStatus> statusList = new ArrayList<>();
             String [] staList ={"Reserve", "Free", "BeUsed","ReferenceRoom"};
+            session.setAttribute("staList", staList);
             for (int i = 0; i < 4 ; i++) {
-                statusList.add(new BookStatus(staList[i],(i+1)));
+                statusList.add(new BookStatus(staList[i],(i)));
             }
             FactoryDAO factory = FactoryDAO.getInstance();
             BooksDAO booksDao = factory.getBooksDAO();
             booksUserList.addAll(booksDao.showUserBooksList(u.getId()));
+            session.setAttribute("clientId", u.getId());
             session.setAttribute("booksUserList", booksUserList);
             session.setAttribute("statusList", statusList);
             session.setAttribute("requestStatus", "Choose");

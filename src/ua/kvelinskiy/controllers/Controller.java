@@ -21,7 +21,6 @@ public class Controller extends HttpServlet {
         Command command = CommandFactory.getInstance().getCommand(wrapper);
         String path= command.execute(wrapper);
         RequestDispatcher rd=request.getRequestDispatcher(path);
-        //wrapper.setAttributes("path", path);
         rd.forward(request, response);
     }
 

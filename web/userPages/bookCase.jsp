@@ -9,22 +9,21 @@
         <table border="1">
             <caption><fmt:message key="ListBooks" bundle="${lang}"/></caption>
             <tr>
-                <th><fmt:message key="ID" bundle="${lang}"/> <fmt:message key="Book" bundle="${lang}"/></th>
-                <th><fmt:message key="Status" bundle="${lang}"/></th>
+                <th><fmt:message key="Title" bundle="${lang}"/></th>
+                <th><fmt:message key="Author" bundle="${lang}"/></th>
                 <th><fmt:message key="DateIssue" bundle="${lang}"/></th>
                 <th><fmt:message key="DateReturn" bundle="${lang}"/></th>
-                <th><fmt:message key="ID" bundle="${lang}"/> <fmt:message key="User" bundle="${lang}"/></th>
-                <th><fmt:message key="ID" bundle="${lang}"/></th>
+                <th><fmt:message key="Status" bundle="${lang}"/></th>
+                <th><fmt:message key="OrderStatus" bundle="${lang}"/></th>
             </tr>
-            <c:forEach items="${catalogueList}" var="catalogueListElem">
+            <c:forEach items="${booksList}" var="booksListElem">
                 <tr>
-                    <td>${catalogueListElem.idBook}</td>
-                    <th>${catalogueListElem.status}</th>
-                    <th>${catalogueListElem.dateIssue}</th>
-                    <th>${catalogueListElem.dateReturn}</th>
-                    <th>${catalogueListElem.idUser}</th>
-                    <th>${catalogueListElem.id}</th>
-
+                    <th>${booksListElem.title}</th>
+                    <th>${booksListElem.author}</th>
+                    <th>${booksListElem.dateIssue}</th>
+                    <th>${booksListElem.dateReturn}</th>
+                    <th><fmt:message key="${booksListElem.statuss}" bundle="${lang}"/></th>
+                    <th><fmt:message key="${booksListElem.orderStatuss}" bundle="${lang}"/></th>
                 </tr>
             </c:forEach>
         </table>

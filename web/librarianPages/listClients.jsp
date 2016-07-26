@@ -25,13 +25,13 @@
         <c:forEach items="${usersList}" var="usersListElem">
             <tr>
                 <td>${usersListElem.id}</td>
-                <td><input type="text" name="fist_name" value="${usersListElem.firstName}"/></td>
-                <td><input type="text" name="last_name" value="${usersListElem.lastName}"/></td>
-                <td><input type="text" name="abonnement" value="${usersListElem.abonnement}"/></td>
-                <td><input type="text" name="contact_information" value="${usersListElem.contactInformation}"/></td>
-                <td><input type="text" name="login" value="${usersListElem.login}"/></td>
-                <td><input type="text" name="password" value="${usersListElem.password}"/></td>
-                <td><input type="text" name="isLibrarian" value="${usersListElem.isLibrarian}"/></td>
+                <td><input type="text" name="fist_name" value="${usersListElem.firstName}" size="15"/>  </td>
+                <td><input type="text" name="last_name" value="${usersListElem.lastName}" size="15"/> </td>
+                <td><input type="text" name="abonnement" value="${usersListElem.abonnement}" size="15"/> </td>
+                <td><input type="text" name="contact_information" value="${usersListElem.contactInformation}" size="15"/> </td>
+                <td><input type="text" name="login" value="${usersListElem.login}" size="15"/> </td>
+                <td><input type="text" name="password" value="${usersListElem.password}" size="15"/> </td>
+                <td><input type="text" name="isLibrarian" value="${usersListElem.isLibrarian}" size="15"/> </td>
             </tr>
         </c:forEach>
     </table>

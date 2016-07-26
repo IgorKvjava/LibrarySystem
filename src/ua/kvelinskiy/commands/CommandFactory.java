@@ -8,6 +8,7 @@ import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.commands.librarian.ClientSearchCommand;
 import ua.kvelinskiy.commands.librarian.ListClientsCommand;
+import ua.kvelinskiy.commands.librarian.PlaceOrderCommand;
 
 import javax.naming.NamingException;
 import java.util.HashMap;
@@ -45,6 +46,7 @@ public class CommandFactory {
         commandMap.put("CheckedBooks", new CheckedBooksCommand());
         commandMap.put("changeLanguage", new ChangeLanguageCommand());
         commandMap.put("mainUserPage", new MainUserPageCommand());
+        commandMap.put("placeOrder", new PlaceOrderCommand());
     }
 
     public static Command getCommand(IRequestWrapper wrapper){
