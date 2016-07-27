@@ -1,7 +1,6 @@
 package ua.kvelinskiy.dao;
 
 import ua.kvelinskiy.entities.Catalogue;
-
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class CatalogueDAO {
     private DataSource ds;
-    // private static final Logger logger = Logger.getLogger(UsersDAO.class);
+    //private static final Logger logger = Logger.getLogger(UsersDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
     public CatalogueDAO(DataSource ds) {
@@ -50,37 +49,40 @@ public class CatalogueDAO {
         }
     }
 
-    public List<Catalogue> getCatalogueListUser1(String idU) {
-        List<Catalogue> catalogueList = new ArrayList<>();
+    public List<Catalogue> getCatalogueListBooks() {
+        List<Catalogue> catalogueListBooks = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
-            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_USER_CATALOGUE"));
-            ps.setString(1, idU);
+            PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_CATALOGUE_BOOKS"));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                int id = rs.getInt("id");
-                int idBook = rs.getInt("id_book");
                 int idUser = rs.getInt("id_user");
+                String abonnement = rs.getString("abonnement");
+                String title = rs.getString("title");
+                String author = rs.getString("author");
+                String publisher = rs.getString("publisher");
                 String status = rs.getString("status");
                 String orderStatus = rs.getString("order_status");
                 Date dateIssue = rs.getDate("date_issue");
                 Date dateReturn = rs.getDate("date_return");
-                catalogueList.add(new Catalogue(id, idBook, idUser, status, orderStatus, dateIssue, dateReturn));
+                catalogueListBooks.add(new Catalogue(idUser, abonnement, title, author, publisher, status, orderStatus, dateIssue, dateReturn));
             }
-            return catalogueList;
+            return catalogueListBooks;
         } catch (SQLException e) {
             //logger.error("SQL error, " + e);
             return null;
         }
     }
 //public class PlaceOrderCommand
-    public boolean updateCatalogueStatus(String id, String status, int idUser) {
+    public boolean updateCatalogueStatus(String id, String status, int idUser, String dateIssue, String dateReturn) {
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("UPDATE_CATALOGUE_STATUS"));
             int idCatalogue = Integer.parseInt(id);
             ps.setString(1, status);
             ps.setString(2, status);
             ps.setInt(3, idUser);
-            ps.setInt(4, idCatalogue);
+            ps.setDate(4, java.sql.Date.valueOf(dateIssue));
+            ps.setDate(5, java.sql.Date.valueOf(dateReturn));
+            ps.setInt(6, idCatalogue);
             ps.execute();
             return true;
         } catch (SQLException e) {

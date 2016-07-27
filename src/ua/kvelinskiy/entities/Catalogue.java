@@ -11,6 +11,11 @@ public class Catalogue {
     private String orderStatus;
     private Date dateIssue;
     private Date dateReturn;
+    private String abonnement;
+    private String title;
+    private String author;
+    private String publisher;
+
 
     public Catalogue() {
     }
@@ -23,6 +28,18 @@ public class Catalogue {
         this.orderStatus = orderStatus;
         this.dateIssue = dateIssue;
         this.dateReturn = dateReturn;
+    }
+ //public List<Catalogue> getCatalogueListBooks()
+    public Catalogue(int idUser, String abonnement, String title, String author, String publisher, String status, String orderStatus, Date dateIssue, Date dateReturn) {
+        this.idUser = idUser;
+        this.status = status;
+        this.orderStatus = orderStatus;
+        this.dateIssue = dateIssue;
+        this.dateReturn = dateReturn;
+        this.abonnement = abonnement;
+        this.title = title;
+        this.author = author;
+        this.publisher = publisher;
     }
 
     public int getId() {
@@ -81,4 +98,35 @@ public class Catalogue {
         this.orderStatus = orderStatus;
     }
 
+    public String getAbonnement() {
+        return abonnement;
+    }
+
+    public void setAbonnement(String abonnement) {
+        this.abonnement = abonnement;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
+    }
 }

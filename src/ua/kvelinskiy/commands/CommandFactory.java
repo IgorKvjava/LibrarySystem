@@ -6,6 +6,7 @@ import ua.kvelinskiy.commands.checkIn.LoginCommand;
 import ua.kvelinskiy.commands.checkIn.SingInCommand;
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
+import ua.kvelinskiy.commands.librarian.CatalogueBooksCommand;
 import ua.kvelinskiy.commands.librarian.ClientSearchCommand;
 import ua.kvelinskiy.commands.librarian.ListClientsCommand;
 import ua.kvelinskiy.commands.librarian.PlaceOrderCommand;
@@ -47,6 +48,7 @@ public class CommandFactory {
         commandMap.put("changeLanguage", new ChangeLanguageCommand());
         commandMap.put("mainUserPage", new MainUserPageCommand());
         commandMap.put("placeOrder", new PlaceOrderCommand());
+        commandMap.put("catalogueBooks", new CatalogueBooksCommand());
     }
 
     public static Command getCommand(IRequestWrapper wrapper){

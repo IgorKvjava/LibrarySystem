@@ -62,6 +62,8 @@ public class Translated_ru extends ListResourceBundle {
             {"Accept", "Утвердить"},
             {"OrderStatus", "Статус заказа"},
             {"ChangeStatus", "Изменить статус"},
+            {"LoginUsed", "Логин используется"},
+            {"", ""},
     };
 
 

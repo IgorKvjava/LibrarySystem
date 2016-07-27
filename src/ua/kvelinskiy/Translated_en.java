@@ -62,7 +62,9 @@ public class Translated_en extends ListResourceBundle {
                 {"Accept", "Accept"},
                 {"OrderStatus", "Order status"},
                 {"ChangeStatus", "ChangeStatus"},
+                {"LoginUsed", "Login used"},
                 {"", ""},
+
 
 
         };

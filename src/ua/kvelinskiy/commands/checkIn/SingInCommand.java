@@ -20,7 +20,7 @@ public class SingInCommand implements Command {
         UsersDAO userDao = factory.getUsersDAO();
         boolean isExist = userDao.isExistLogin(user);
         if (isExist) {
-            session.setAttribute("login_used", "login used");
+            session.setAttribute("login_used", "LoginUsed");
             String path = "/registration.jsp";
             session.setAttribute("path", path);
             return path;

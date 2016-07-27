@@ -11,6 +11,8 @@ public class PlaceOrderCommand implements ua.kvelinskiy.commands.interfaces.Comm
         HttpSession session = wrapper.getSession(true);
         String[] idStatus = wrapper.getParameterValues("idStat");
         String[] idCatalogue = wrapper.getParameterValues("idCatal");
+        String[] dateIssue = wrapper.getParameterValues("dateIssue");
+        String[] dateReturn = wrapper.getParameterValues("dateReturn");
         FactoryDAO factory = FactoryDAO.getInstance();
         CatalogueDAO catalogueDao = factory.getCatalogueDAO();
         String [] staList = (String[]) session.getAttribute("staList");
@@ -27,7 +29,7 @@ public class PlaceOrderCommand implements ua.kvelinskiy.commands.interfaces.Comm
                 if (listStatus.equals("Reserve")) {
                     continue lab1;
                 }
-                catalogueDao.updateCatalogueStatus(idCatalogue[i], listStatus, idTime);
+                catalogueDao.updateCatalogueStatus(idCatalogue[i], listStatus, idTime, dateIssue[i], dateReturn[i]);
             }
         }
         String path = "/librarianPages/mainLibrarianPage.jsp";
