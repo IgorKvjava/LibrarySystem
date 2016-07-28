@@ -2,7 +2,7 @@ package ua.kvelinskiy.entities;
 
 import java.util.Date;
 
-public class Books {
+public class Book {
  	private int id;
     private int idGenre;
     private int numberPages;
@@ -17,10 +17,10 @@ public class Books {
     private int idCatalogue;
 
 
-    public Books() {
+    public Book() {
     }
-//public List<Books> showBooksList(int idGenre)
-    public Books(int id, int numberPages, String title, String author, String publisher, Date publicationDate, Date dateIssue, Date dateReturn, String statuss, String orderStatuss) {
+//public List<Book> showBooksList(int idGenre)
+    public Book(int id, int numberPages, String title, String author, String publisher, Date publicationDate, Date dateIssue, Date dateReturn, String statuss, String orderStatuss) {
         this.id = id;
         this.numberPages = numberPages;
         this.title = title;
@@ -33,7 +33,7 @@ public class Books {
         this.orderStatuss = orderStatuss;
     }
 
-    public Books(int id, int numberPages, String title, String author, String publisher, Date publicationDate) {
+    public Book(int id, int numberPages, String title, String author, String publisher, Date publicationDate) {
         this.id = id;
         this.numberPages = numberPages;
         this.title = title;
@@ -41,8 +41,8 @@ public class Books {
         this.publisher = publisher;
         this.publicationDate = publicationDate;
     }
-//public List<Books> showUserBooksList(int idUser)
-    public Books(String title, String author, Date dateIssue, Date dateReturn, String statuss, String orderStatuss, int idCatalogue) {
+//public List<Book> showUserBooksList(int idUser)
+    public Book(String title, String author, Date dateIssue, Date dateReturn, String statuss, String orderStatuss, int idCatalogue) {
         this.title = title;
         this.author = author;
         this.dateIssue = dateIssue;

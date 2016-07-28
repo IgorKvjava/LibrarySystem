@@ -2,10 +2,10 @@ package ua.kvelinskiy.commands.User;
 
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
-import ua.kvelinskiy.dao.BooksDAO;
+import ua.kvelinskiy.dao.BookDAO;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.entities.Books;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.entities.Book;
+import ua.kvelinskiy.entities.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -15,17 +15,17 @@ public class OrderBooksCommand implements Command {
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
-        Users user = (Users) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if (user == null){
             return "/index.jsp";
         }
         String path;
         FactoryDAO factory = FactoryDAO.getInstance();
-        BooksDAO booksDao = factory.getBooksDAO();
-        List<Books> booksList = new ArrayList<>();
+        BookDAO bookDao = factory.getBooksDAO();
+        List<Book> bookList = new ArrayList<>();
         int idGenre = Integer.parseInt(wrapper.getParameter("idGenre"));
-        booksList.addAll(booksDao.showBooksList(idGenre));
-        session.setAttribute("booksList", booksList);
+        bookList.addAll(bookDao.showBooksList(idGenre));
+        session.setAttribute("bookList", bookList);
         path = "/userPages/userOrderBooks.jsp";
         session.setAttribute("path", path);
         return path;

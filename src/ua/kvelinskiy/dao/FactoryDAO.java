@@ -25,19 +25,19 @@ public class FactoryDAO {
         return instance;
     }
 
-    public UsersDAO getUsersDAO() {
-        return new UsersDAO(ds);
+    public UserDAO getUsersDAO() {
+        return new UserDAO(ds);
     }
 
-    public GenresDAO getGenresDAO(){
-        return new GenresDAO(ds);
+    public GenreDAO getGenresDAO(){
+        return new GenreDAO(ds);
     }
 
     public CatalogueDAO getCatalogueDAO(){
         return new CatalogueDAO(ds);
     }
 
-    public BooksDAO getBooksDAO(){
-        return  new BooksDAO(ds);
+    public BookDAO getBooksDAO(){
+        return  new BookDAO(ds);
     }
 }

@@ -3,8 +3,8 @@ package ua.kvelinskiy.commands.checkIn;
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.dao.UsersDAO;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.dao.UserDAO;
+import ua.kvelinskiy.entities.User;
 import javax.servlet.http.HttpSession;
 
 public class SingInCommand implements Command {
@@ -13,11 +13,11 @@ public class SingInCommand implements Command {
         HttpSession session = wrapper.getSession(true);
         String login = wrapper.getParameter("login");
         session.setAttribute("login", login);
-        Users user = new Users();
+        User user = new User();
         user.setLogin(login);
         session.setAttribute("user", user);
         FactoryDAO factory = FactoryDAO.getInstance();
-        UsersDAO userDao = factory.getUsersDAO();
+        UserDAO userDao = factory.getUsersDAO();
         boolean isExist = userDao.isExistLogin(user);
         if (isExist) {
             session.setAttribute("login_used", "LoginUsed");

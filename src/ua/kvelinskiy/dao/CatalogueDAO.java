@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 public class CatalogueDAO {
     private DataSource ds;
-    //private static final Logger logger = Logger.getLogger(UsersDAO.class);
+    //private static final Logger logger = Logger.getLogger(UserDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
     public CatalogueDAO(DataSource ds) {

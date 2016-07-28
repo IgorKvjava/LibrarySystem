@@ -1,5 +1,6 @@
 package ua.kvelinskiy.commands;
 
+import org.apache.log4j.Logger;
 import ua.kvelinskiy.commands.User.*;
 import ua.kvelinskiy.commands.checkIn.CheckInCommand;
 import ua.kvelinskiy.commands.checkIn.LoginCommand;
@@ -10,12 +11,13 @@ import ua.kvelinskiy.commands.librarian.CatalogueBooksCommand;
 import ua.kvelinskiy.commands.librarian.ClientSearchCommand;
 import ua.kvelinskiy.commands.librarian.ListClientsCommand;
 import ua.kvelinskiy.commands.librarian.PlaceOrderCommand;
-
 import javax.naming.NamingException;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class CommandFactory {
+    private static final Logger LOGGER = Logger.getLogger(CommandFactory.class);
 
     private static Map<String, Command> commandMap = new HashMap<String, Command>();
     private static CommandFactory instance = null;
@@ -28,7 +30,8 @@ public class CommandFactory {
             try {
                 instance = new CommandFactory();
             } catch (NamingException e) {
-                e.printStackTrace();
+                LOGGER.error("NamingException", e);
+                //e.printStackTrace();
             }
         }
         return instance;

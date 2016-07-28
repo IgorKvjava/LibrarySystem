@@ -3,9 +3,9 @@ package ua.kvelinskiy.commands.User;
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.dao.GenresDAO;
-import ua.kvelinskiy.entities.Genres;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.dao.GenreDAO;
+import ua.kvelinskiy.entities.Genre;
+import ua.kvelinskiy.entities.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -15,16 +15,16 @@ public class OrderGenreCommand implements Command {
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
-        Users user = (Users) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if (user == null){
             return "/index.jsp";
         }
         String path;
         FactoryDAO factory = FactoryDAO.getInstance();
-        GenresDAO genresDao = factory.getGenresDAO();
-        List<Genres> genresList = new ArrayList<>();
-        genresList.addAll(genresDao.showGenresList());
-        session.setAttribute("genresList", genresList);
+        GenreDAO genreDao = factory.getGenresDAO();
+        List<Genre> genreList = new ArrayList<>();
+        genreList.addAll(genreDao.showGenresList());
+        session.setAttribute("genreList", genreList);
         path = "/userPages/userOrderPage.jsp";
         session.setAttribute("path", path);
         return path;

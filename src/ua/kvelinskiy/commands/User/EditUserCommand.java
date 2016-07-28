@@ -3,8 +3,8 @@ package ua.kvelinskiy.commands.User;
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.dao.UsersDAO;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.dao.UserDAO;
+import ua.kvelinskiy.entities.User;
 
 import javax.servlet.http.HttpSession;
 
@@ -12,13 +12,13 @@ public class EditUserCommand implements Command {
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
-        Users user = (Users) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if (user == null) {
             return "/index.jsp";
         }
         String path;
         FactoryDAO factory = FactoryDAO.getInstance();
-        UsersDAO userDao = factory.getUsersDAO();
+        UserDAO userDao = factory.getUsersDAO();
         user.setFirstName(wrapper.getParameter("first_name"));
         user.setLastName(wrapper.getParameter("last_name"));
         user.setContactInformation(wrapper.getParameter("contact_information"));

@@ -9,7 +9,7 @@
     <form action="${pageContext.request.contextPath}/command" method="post">
         <p>
             <select name="idGenre">
-            <c:forEach items="${genresList}" var="genresListElem">
+            <c:forEach items="${genreList}" var="genresListElem">
                 <option  value="${genresListElem.id}"> <fmt:message key="${genresListElem.genre}" bundle="${lang}"/> </option>
             </c:forEach>
         </select>

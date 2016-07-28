@@ -5,19 +5,16 @@ import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.CatalogueDAO;
 import ua.kvelinskiy.dao.FactoryDAO;
 import ua.kvelinskiy.entities.Catalogue;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.entities.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * Created by saha on 27.07.2016.
- */
 public class CatalogueBooksCommand implements Command {
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
-        Users user = (Users) session.getAttribute("user");
+        User user = (User) session.getAttribute("user");
         if (user == null) {
             session.invalidate();
             return "/index.jsp";

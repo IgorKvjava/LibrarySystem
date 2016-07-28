@@ -1,13 +1,13 @@
 package ua.kvelinskiy.entities;
 
-public class Genres  {
+public class Genre {
     private int id;
     private String genre;
 
-    public Genres() {
+    public Genre() {
     }
 
-    public Genres(int id, String genre) {
+    public Genre(int id, String genre) {
         this.id = id;
         this.genre = genre;
     }

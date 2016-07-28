@@ -18,7 +18,7 @@
                 <th><fmt:message key="OrderStatus" bundle="${lang}"/></th>
                 <th><fmt:message key="Choice" bundle="${lang}"/></th>
             </tr>
-            <c:forEach items="${booksList}" var="booksUserListElem">
+            <c:forEach items="${bookList}" var="booksUserListElem">
                 <tr>
                     <th>${booksUserListElem.title}</th>
                     <th>${booksUserListElem.author}</th>

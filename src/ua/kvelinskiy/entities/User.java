@@ -1,6 +1,6 @@
 package ua.kvelinskiy.entities;
 
-public class Users {
+public class User {
 
     private int id;
     private String firstName;
@@ -11,11 +11,11 @@ public class Users {
     private String password;
     private boolean isLibrarian;
 
-    public Users() {
+    public User() {
     }
 
-    public Users(int id, String firstName, String lastName,
-                 String abonnement, String contactInformation, String login, String password, boolean isLibrarian) {
+    public User(int id, String firstName, String lastName,
+                String abonnement, String contactInformation, String login, String password, boolean isLibrarian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

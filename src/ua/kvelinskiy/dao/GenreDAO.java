@@ -1,6 +1,6 @@
 package ua.kvelinskiy.dao;
 
-import ua.kvelinskiy.entities.Genres;
+import ua.kvelinskiy.entities.Genre;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -11,16 +11,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GenresDAO {
+public class GenreDAO {
     private DataSource ds;
-    // private static final Logger logger = Logger.getLogger(UsersDAO.class);
+    // private static final Logger logger = Logger.getLogger(UserDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
-    public GenresDAO(DataSource ds) {
+    public GenreDAO(DataSource ds) {
         this.ds = ds;
     }
 
-    public Genres getGenreData(Genres genre){
+    public Genre getGenreData(Genre genre){
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_GENRE_DATA"));
             ps.setString(1, genre.getGenre());
@@ -36,17 +36,17 @@ public class GenresDAO {
         }
     }
 
-    public List<Genres> showGenresList(){
-        List<Genres> genresList = new ArrayList<>();
+    public List<Genre> showGenresList(){
+        List<Genre> genreList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_GENRE_LIST"));
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String 	genre = rs.getString("genre");
-                genresList.add(new Genres(id, genre));
+                genreList.add(new Genre(id, genre));
             }
-            return genresList;
+            return genreList;
         } catch (SQLException e) {
             //logger.error("SQL error, " + e);
             return null;

@@ -3,28 +3,28 @@ package ua.kvelinskiy.commands.checkIn;
 import ua.kvelinskiy.commands.interfaces.Command;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.FactoryDAO;
-import ua.kvelinskiy.dao.UsersDAO;
+import ua.kvelinskiy.dao.UserDAO;
 import ua.kvelinskiy.entities.Catalogue;
-import ua.kvelinskiy.entities.Users;
+import ua.kvelinskiy.entities.User;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
 public class LoginCommand implements Command {
-    //private static final Logger logger = Logger.getLogger(LoginCommand.class);
+    //private static final Logger LOGGER = Logger.getLogger(LoginCommand.class);
 
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
         String login = wrapper.getParameter("login");
         String password = wrapper.getParameter("password");
-        Users user = new Users();
+        User user = new User();
         user.setLogin(login);
         user.setPassword(password);
         String path;
         FactoryDAO factory = FactoryDAO.getInstance();
-        UsersDAO userDao = factory.getUsersDAO();
+        UserDAO userDao = factory.getUsersDAO();
         boolean isExist = userDao.isExist(user);
         if (isExist) {
             userDao.getUserData(user);
@@ -37,7 +37,7 @@ public class LoginCommand implements Command {
             session.setAttribute("login", user.getLogin());
             session.setAttribute("password", user.getPassword());
             if (user.getIsLibrarian()) {
-                List<Users> usersList = new ArrayList<>();
+                List<User> usersList = new ArrayList<>();
                 usersList.addAll(userDao.showActiveUsers());
                 session.setAttribute("usersList", usersList);
                 session.setAttribute("requestStatus", "Choose");

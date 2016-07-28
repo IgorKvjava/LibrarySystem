@@ -1,6 +1,7 @@
 package ua.kvelinskiy.dao;
 
-import ua.kvelinskiy.entities.Books;
+import ua.kvelinskiy.entities.Book;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,17 +12,17 @@ import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class BooksDAO {
+public class BookDAO {
     private DataSource ds;
-    // private static final Logger logger = Logger.getLogger(UsersDAO.class);
+    // private static final Logger logger = Logger.getLogger(UserDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
-    public BooksDAO(DataSource ds) {
+    public BookDAO(DataSource ds) {
         this.ds = ds;
     }
 //public class OrderBooksCommand
-    public List<Books> showBooksList(int idGenre){
-        List<Books> booksList = new ArrayList<>();
+    public List<Book> showBooksList(int idGenre){
+        List<Book> bookList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_BOOKS_LIST"));
             ps.setString(1, String.valueOf(idGenre));
@@ -37,18 +38,18 @@ public class BooksDAO {
                 Date dateReturn = rs.getDate("date_return");
                 String status = rs.getString("status");
                 String orderStatus = rs.getString("order_status");
-                booksList.add(new Books(id, numberPages, title, author, publisher,
+                bookList.add(new Book(id, numberPages, title, author, publisher,
                         publicationDate, dateIssue, dateReturn, status, orderStatus));
             }
-            return booksList;
+            return bookList;
         } catch (SQLException e) {
             //logger.error("SQL error, " + e);
             return null;
         }
     }
 
-    public List<Books> showUserBooksList(int idUser){
-        List<Books> booksList = new ArrayList<>();
+    public List<Book> showUserBooksList(int idUser){
+        List<Book> bookList = new ArrayList<>();
         try (Connection conn = ds.getConnection()) {
             PreparedStatement ps = conn.prepareStatement(resourceBundle.getString("GET_USER_BOOKS"));
             ps.setString(1, String.valueOf(idUser));
@@ -61,9 +62,9 @@ public class BooksDAO {
                 String statuss = rs.getString("status");
                 String orderStatuss = rs.getString("order_status");
                 int idCatalogue = rs.getInt("id");
-                booksList.add(new Books(title, author, dateIssue, dateReturn, statuss, orderStatuss,idCatalogue));
+                bookList.add(new Book(title, author, dateIssue, dateReturn, statuss, orderStatuss,idCatalogue));
             }
-            return booksList;
+            return bookList;
         } catch (SQLException e) {
             //logger.error("SQL error, " + e);
             return null;
