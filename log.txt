@@ -1,0 +1,8 @@
+13:23:48.440 [http-nio-8080-exec-8] ERROR UserDAO:116 - SQL error, java.sql.SQLException: Incorrect string value: '\xD1\x8B\xD0\xB2\xD0\xBC...' for column 'first_name' at row 22
+13:23:49.252 [http-nio-8080-exec-9] ERROR UserDAO:116 - SQL error, java.sql.SQLException: Incorrect string value: '\xD1\x8B\xD0\xB2\xD0\xBC...' for column 'first_name' at row 22
+13:38:07.383 [http-nio-8080-exec-9] ERROR PlaceOrderCommand:64 - Date Format error, java.text.ParseException: Unparseable date: ""
+13:41:08.498 [http-nio-8080-exec-9] ERROR PlaceOrderCommand:64 - Date Format error, java.text.ParseException: Unparseable date: ""
+14:00:55.143 [http-nio-8080-exec-9] ERROR PlaceOrderCommand:65 - Date Format error, java.text.ParseException: Unparseable date: ""
+14:06:54.671 [http-nio-8080-exec-9] ERROR PlaceOrderCommand:67 - Date Format error, java.text.ParseException: Unparseable date: ""
+00:06:48.432 [http-nio-8080-exec-6] ERROR UserDAO:116 - SQL error, java.sql.SQLException: Incorrect string value: '\xD1\x80\xD0\xBF\xD0\xB0...' for column 'first_name' at row 19
+00:13:56.919 [http-nio-8080-exec-3] ERROR PlaceOrderCommand:67 - Date Format error, java.text.ParseException: Unparseable date: ""

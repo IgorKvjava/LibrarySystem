@@ -1,11 +1,13 @@
 package ua.kvelinskiy.dao;
 
+import org.apache.log4j.Logger;
+
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 public class FactoryDAO {
-   // private static final Logger logger = Logger.getLogger(FactoryDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(FactoryDAO.class);
     private static FactoryDAO instance = null;
     private DataSource ds;
 
@@ -19,7 +21,7 @@ public class FactoryDAO {
             try {
                 instance = new FactoryDAO();
             } catch (NamingException ex) {
-                //logger.error("Bad instance " + ex);
+                LOGGER.error("Bad instance " + ex);
             }
         }
         return instance;

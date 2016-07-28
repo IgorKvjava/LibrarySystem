@@ -1,5 +1,6 @@
 package ua.kvelinskiy.commands.librarian;
 
+import org.apache.log4j.Logger;
 import ua.kvelinskiy.commands.interfaces.IRequestWrapper;
 import ua.kvelinskiy.dao.CatalogueDAO;
 import ua.kvelinskiy.dao.FactoryDAO;
@@ -12,6 +13,8 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class PlaceOrderCommand implements ua.kvelinskiy.commands.interfaces.Command {
+    private static final Logger LOGGER = Logger.getLogger(PlaceOrderCommand.class);
+    private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd") {{ setLenient(false); }};
     @Override
     public String execute(IRequestWrapper wrapper) {
         HttpSession session = wrapper.getSession(true);
@@ -20,7 +23,7 @@ public class PlaceOrderCommand implements ua.kvelinskiy.commands.interfaces.Comm
             session.invalidate();
             return "/index.jsp";
         }
-        Date 	currentDate = new Date();
+        Date currentDate = new Date();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         String[] idStatus = wrapper.getParameterValues("idStat");
@@ -44,11 +47,25 @@ public class PlaceOrderCommand implements ua.kvelinskiy.commands.interfaces.Comm
                 if (listStatus.equals("Reserve")) {
                     continue lab1;
                 }
+                if (isValidDate(dateIssue[i]) && isValidDate(dateReturn[i])){
                 catalogueDao.updateCatalogueStatus(idCatalogue[i], listStatus, idTime, dateIssue[i], dateReturn[i]);
+                }else{
+                    session.setAttribute("requestStatus", "IncorrectDate");
+                }
             }
         }
         String path = "/librarianPages/mainLibrarianPage.jsp";
         session.setAttribute("path", path);
         return path;
+    }
+
+    public static boolean isValidDate(String date) {
+        try {
+            sdf.parse(date);
+            return true;
+        } catch (Exception e) {
+            LOGGER.error("Date Format error, " + e);
+        }
+        return false;
     }
 }

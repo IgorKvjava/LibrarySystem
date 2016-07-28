@@ -13,9 +13,9 @@
             <label><fmt:message key="Your" bundle="${lang}"/> <fmt:message key="LOGIN" bundle="${lang}"/>:<br></label>
             <input type="text" name="login" value="" size="15" maxlength="15"/>
         </p>
-<c:if test="${login_used != null}">
-        <h1> <fmt:message key="${login_used}" bundle="${lang}"/></h1>
-    </c:if>
+        <c:if test="${login_used != null}">
+            <h1><fmt:message key="${login_used}" bundle="${lang}"/></h1>
+        </c:if>
         <p>
             <input type="hidden" name="do" value="SingIn"/>
             <input type="submit" value="<fmt:message key="Accept" bundle="${lang}"/>"/>

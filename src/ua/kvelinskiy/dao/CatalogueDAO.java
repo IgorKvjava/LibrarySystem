@@ -1,5 +1,6 @@
 package ua.kvelinskiy.dao;
 
+import org.apache.log4j.Logger;
 import ua.kvelinskiy.entities.Catalogue;
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -13,7 +14,7 @@ import java.util.ResourceBundle;
 
 public class CatalogueDAO {
     private DataSource ds;
-    //private static final Logger logger = Logger.getLogger(UserDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(CatalogueDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
     public CatalogueDAO(DataSource ds) {
@@ -31,7 +32,7 @@ public class CatalogueDAO {
                 ps.execute();
             return true;
         } catch (SQLException e) {
-            // logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return false;
         }
     }
@@ -44,7 +45,7 @@ public class CatalogueDAO {
             ps.execute();
             return true;
         } catch (SQLException e) {
-            // logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return false;
         }
     }
@@ -68,7 +69,7 @@ public class CatalogueDAO {
             }
             return catalogueListBooks;
         } catch (SQLException e) {
-            //logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return null;
         }
     }
@@ -86,7 +87,7 @@ public class CatalogueDAO {
             ps.execute();
             return true;
         } catch (SQLException e) {
-            // logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return false;
         }
 

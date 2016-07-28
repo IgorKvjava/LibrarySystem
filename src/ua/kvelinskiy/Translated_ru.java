@@ -63,7 +63,7 @@ public class Translated_ru extends ListResourceBundle {
             {"OrderStatus", "Статус заказа"},
             {"ChangeStatus", "Изменить статус"},
             {"LoginUsed", "Логин используется"},
-            {"", ""},
+            {"IncorrectDate", "Неправильно введена дата"},
     };
 
 

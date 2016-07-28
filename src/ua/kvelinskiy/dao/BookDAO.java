@@ -1,5 +1,6 @@
 package ua.kvelinskiy.dao;
 
+import org.apache.log4j.Logger;
 import ua.kvelinskiy.entities.Book;
 
 import javax.sql.DataSource;
@@ -14,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class BookDAO {
     private DataSource ds;
-    // private static final Logger logger = Logger.getLogger(UserDAO.class);
+    private static final Logger LOGGER = Logger.getLogger(BookDAO.class);
     private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("sqlstatements");
 
     public BookDAO(DataSource ds) {
@@ -43,7 +44,7 @@ public class BookDAO {
             }
             return bookList;
         } catch (SQLException e) {
-            //logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return null;
         }
     }
@@ -66,7 +67,7 @@ public class BookDAO {
             }
             return bookList;
         } catch (SQLException e) {
-            //logger.error("SQL error, " + e);
+            LOGGER.error("SQL error, " + e);
             return null;
         }
     }
